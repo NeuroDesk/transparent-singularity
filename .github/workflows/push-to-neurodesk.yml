@@ -26,6 +26,6 @@ jobs:
           git remote add subtree https://vnm-neurodesk:${{secrets.VNM_NEURODESK}}@github.com/NeuroDesk/transparent-singularity.git
           git remote add upstream https://vnm-neurodesk:${{secrets.VNM_NEURODESK}}@github.com/NeuroDesk/neurocommand.git
       - name: Pull transparent-singularity into subtree
-        run:  git subtree pull --prefix neurodesk/transparent-singularity subtree master --squash
+        run:  git subtree pull --prefix neurodesk/transparent-singularity subtree main --squash
       - name: Push to neurodesk
-        run:  git push upstream master
+        run:  git push upstream main
