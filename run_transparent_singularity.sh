@@ -198,6 +198,7 @@ while read executable; do \
    echo "#!/usr/bin/env bash" > $executable
    echo "export PWD=\`pwd -P\`" >> $executable
    echo "singularity exec $singularity_opts \$neurodesk_singularity_opts --pwd \$PWD $_base/$container $executable \"\$@\"" >> $executable
+   # neurodesk_singularity_opts is a global variable that can be set in neurodesk for example --nv for gpu support
    chmod a+x $executable
 done < $_base/commands.txt
 
