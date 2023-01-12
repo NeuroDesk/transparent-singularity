@@ -39,7 +39,7 @@ echo "CVMFS_QUOTA_LIMIT=5000" | sudo tee -a  /etc/cvmfs/default.local
 sudo cvmfs_config setup
 sudo cvmfs_config chksetup
 
-ls /cvmfs/neurodesk.ardc.edu.au
+ls /cvmfs/neurodesk.ardc.edu.au/containers
 
 cvmfs_config stat -v neurodesk.ardc.edu.au
 
@@ -47,7 +47,7 @@ bash run_transparent_singularity.sh --container itksnap_3.8.0_20201208.simg
 
 # check if container exists on cvmfs
 
-if [[ -d "/cvmfs/neurodesk.ardc.edu.au/containers/itksnap_3.8.0:20201208" ]]; then
+if [[ -d "/cvmfs/neurodesk.ardc.edu.au/containers/itksnap_3.8.0_20201208" ]]; then
    echo "Container exists in cvmfs"
 else
    echo "Container does NOT exist!"
