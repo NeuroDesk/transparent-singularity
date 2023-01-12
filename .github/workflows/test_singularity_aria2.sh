@@ -29,7 +29,7 @@ bash run_transparent_singularity.sh --container itksnap_3.8.0_20200811.simg
 
 
 # check if container file exists
-if [ -f /home/runner/work/transparent-singularity/itksnap_3.8.0_20200811.simg ]; then
+if [ -f /home/runner/work/transparent-singularity/transparent-singularity/itksnap_3.8.0_20200811.simg ]; then
     echo "[DEBUG]: Container file exists"
 else 
     echo "[DEBUG]: Container file does not exist! Something went wrong when downloading."
@@ -37,16 +37,10 @@ else
 fi
 
 # check if transparent singularity generated executable output file:
-FILE="/home/runner/work/transparent-singularity/itksnap"
+FILE="/home/runner/work/transparent-singularity/transparent-singularity/itksnap"
 if [ -f $FILE ];then
     echo "[DEBUG]: $FILE exists."
 else
-    echo "[DEBUG]: $FILE doesn't exist. Something went wrong with transparent singularity. Trying again."
-    rm -rf /home/runner/work/neurocommand/itksnap_3.8.0_20200811.simg
-    bash /home/runner/work/neurocommand/neurocommand/local/fetch_containers.sh itksnap 3.8.0 20200811 itksnap /MRIcrop-orig.gipl
-    if [ -f $FILE ];then
-        echo "[DEBUG]: $FILE exists."
-    else 
-        echo "[DEBUG]: $FILE doesn't exist. Something went wrong with transparent singularity. Trying again."
-    fi
+    echo "[DEBUG]: $FILE doesn't exist. Something went wrong with transparent singularity. "
+    exit 1
 fi
