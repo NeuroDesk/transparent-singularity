@@ -20,7 +20,7 @@ jobs:
     - name: Test singularity and curl before pushing to neurocommand
       run: /bin/bash .github/workflows/test_singularity_curl.sh
   push_to_neurocommand:
-    needs: test_singularity_aria2,test_singularity_curl
+    needs: [test_singularity_aria2,test_singularity_curl]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
