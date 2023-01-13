@@ -213,7 +213,7 @@ if  [[ -f $_base/commands.txt ]]; then
    echo "[DEBUG] run_transparent_singularity: This worked!"
 else
    echo "[DEBUG] run_transparent_singularity: Trying to guess singularity bindpaths:"
-   export SINGULARITY_BINDPATH=$PWD
+   export SINGULARITY_BINDPATH=$PWD,/cvmfs
    echo "SINGULARITY_BINDPATH: $SINGULARITY_BINDPATH"
    singularity exec $singularity_opts --pwd $_base $container $_base/ts_binaryFinder.sh
    if  [[ -f $_base/commands.txt ]]; then
