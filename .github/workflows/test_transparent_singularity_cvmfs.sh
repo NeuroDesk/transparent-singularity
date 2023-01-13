@@ -55,7 +55,7 @@ else
 fi
 
 # check if container link exists
-if [ -f /home/runner/work/transparent-singularity/transparent-singularity/itksnap_3.8.0_20201208.simg ]; then
+if [ -L /home/runner/work/transparent-singularity/transparent-singularity/itksnap_3.8.0_20201208.simg ]; then
     echo "[DEBUG]: Container file link exists"
 else 
     echo "[DEBUG]: Container file does not exist! Something went wrong."
