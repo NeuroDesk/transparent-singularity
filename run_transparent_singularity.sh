@@ -187,6 +187,8 @@ if  [[ -e $container ]]; then
    echo "container downloaded already. Remove to re-download!"
 else
    echo "pulling image now ..."
+   echo "where am I: pwd"
+   echo "running: $container_pull"
    $container_pull
 fi
 
