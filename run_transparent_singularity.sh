@@ -124,7 +124,7 @@ echo "checking if $container exists in the cvmfs cache ..."
 if [[ -d "/cvmfs/neurodesk.ardc.edu.au/containers/${containerName}_${containerVersion}_${containerDate}" ]]; then
    echo "$container exists in cvmfs"
    storage="cvmfs"
-   container_pull="ln -s /cvmfs/neurodesk.ardc.edu.au/containers/${containerName}_${containerVersion}_${containerDate}/${containerName}_${containerVersion}_${containerDate} $container"
+   container_pull="ln -s /cvmfs/neurodesk.ardc.edu.au/containers/${containerName}_${containerVersion}_${containerDate}/${containerName}_${containerVersion}_${containerDate}.simg $container"
 else
    echo "$container does not exists in cvmfs. Testing Oracle Object storage next: "
    if curl --output /dev/null --silent --head --fail "https://objectstorage.us-ashburn-1.oraclecloud.com/n/sd63xuke79z3/b/neurodesk/o/$container"; then
