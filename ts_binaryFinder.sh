@@ -5,6 +5,6 @@ for i in $DEPLOY_PATH; \
 for i in $DEPLOY_BINS; \
    do echo "$i"; done >> commands.txt
 
-env > env.txt
+env | grep DEPLOY_ENV > env.txt
 
 
