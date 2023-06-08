@@ -248,4 +248,18 @@ moduleName=`echo $container | cut -d _ -f 2`
 echo "#%Module####################################################################" > ${modulePath}/${moduleName}
 echo "module-whatis  ${container}" >> ${modulePath}/${moduleName}
 echo "prepend-path PATH ${_base}" >> ${modulePath}/${moduleName}
+
+echo "create environment variables for module file"
+while read envvariable; do \
+   echo "setenv ${envvariable#*DEPLOY_ENVVAR_}" >> ${modulePath}/${moduleName}
+done < $_base/envvar.txt
+
+echo "create environment path variables for module file"
+while read envvariable; do \
+   absolutePath=${_base}${envvariable#*=}
+   completeVariableName=${envvariable%=*}
+   variableName=${completeVariableName#*DEPLOY_ENVPATH_}
+   echo "setenv $variableName=$absolutePath" >> ${modulePath}/${moduleName}
+done < $_base/envpath.txt
+
 echo "rm ${modulePath}/${moduleName}" >> ts_uninstall.sh
