@@ -9,7 +9,7 @@
 
 echo "[DEBUG] This is the run_transparent_singularity.sh script"
 
-export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$PWD,/cvmfs
+export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$PWD
 
 _script="$(readlink -f ${BASH_SOURCE[0]})" ## who am i? ##
 _base="$(dirname $_script)" ## Delete last component from $_script ##
