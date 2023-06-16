@@ -200,13 +200,13 @@ else
    $container_pull
 fi
 
-if [[ $unpack = "true" ]]
-then
+# if [[ $unpack = "true" ]]
+# then
    echo "unpacking singularity file to sandbox directory:"
     singularity build --sandbox temp $container
     rm -rf $container
     mv temp $container
-fi
+# fi
 
 echo "checking which executables exist inside container"
 echo "executing: singularity exec $singularity_opts --pwd $_base $container $_base/ts_binaryFinder.sh"
@@ -219,7 +219,7 @@ while read executable; do \
    echo $executable > $_base/${executable}; \
    echo "#!/usr/bin/env bash" > $executable
    echo "export PWD=\`pwd -P\`" >> $executable
-   echo "singularity --silent exec $singularity_opts \$neurodesk_singularity_opts --pwd \$PWD $_base/$container $executable \"\$@\"" >> $executable
+   echo "singularity --silent exec \$neurodesk_singularity_opts --pwd \$PWD $_base/$container $executable \"\$@\"" >> $executable
    # neurodesk_singularity_opts is a global variable that can be set in neurodesk for example --nv for gpu support
    # --silent is required to suppress bind mound warnings (e.g. for /etc/localtime)
    chmod a+x $executable
