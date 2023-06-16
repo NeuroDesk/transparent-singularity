@@ -200,13 +200,13 @@ else
    $container_pull
 fi
 
-# if [[ $unpack = "true" ]]
-# then
+if [[ $unpack = "true" ]]
+then
    echo "unpacking singularity file to sandbox directory:"
     singularity build --sandbox temp $container
     rm -rf $container
     mv temp $container
-# fi
+fi
 
 echo "checking which executables exist inside container"
 echo "executing: singularity exec $singularity_opts --pwd $_base $container $_base/ts_binaryFinder.sh"
