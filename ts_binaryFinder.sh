@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 IFS=':'; \
 for i in $DEPLOY_PATH; \
    do find "$i" -maxdepth 1 -executable -type f -exec basename {} \;; done > commands_raw.txt
@@ -16,11 +17,7 @@ getListOfSystemCommandsToBeDeleted() {
   printf '%s\n' bash cat chmod cp cut date echo env find grep head ln ls mkdir mv pwd rm sed sort tail touch tr uname uniq wc
 }
 
-getInFile() {
-  cat commands_raw.txt
-}
-
-sed -E 's/\<('"$(tr '\n' '|' < <(getListOfSystemCommandsToBeDeleted) )"')\>//gI' <(getInFile) > commands.txt
+sed -E 's/\<('"$(tr '\n' '|' < <(getListOfSystemCommandsToBeDeleted) )"')\>//gI' < commands_raw.txt > commands.txt
 sed -i '/^\s*$/d' commands.txt
 
 touch env.txt
