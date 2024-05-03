@@ -186,8 +186,7 @@ else
               
           container_pull="curl -X GET ${url}${container} -O"
        else 
-         # if aria2c does exist:
-          container_pull="aria2c ${$url_cdn}${container} ${$url_nectar}${container}"
+          container_pull="aria2c ${url_cdn}${container} ${url_nectar}${container}"
        fi # end of aria2c check
    else # end of check if files exist in object storage
       # fallback to docker
