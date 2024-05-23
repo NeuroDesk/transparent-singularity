@@ -236,8 +236,11 @@ while read executable; do \
    # --cleanenv is required to prevent environment variables on the host to affect the containers (e.g. Julia and R packages), but to work 
    # correctly with GUIs, the DISPLAY variable needs to be set as well. This only works in singularity >= 3.6.0
    # --bind is needed to handle non-default temp directories (Github issue #11)
-   for customtmp in $TMP $TMPDIR $TEMP $TEMPDIR; do
-      bindtmpdir="--bind \\$customtmp:/tmp"
+   for customtmp in TMP TMPDIR TEMP TEMPDIR; do
+      eval tmpvar=\$$customtmp
+      if [[ -n $tmpvar ]]; then
+         bindtmpdir="--bind \$$customtmp:/tmp"
+      fi
    done
    if printf '%s\n' "$required_version" "$singularity_version" | sort -V | head -n1 | grep -q "$required_version"; then
       echo "singularity --silent exec --cleanenv --env DISPLAY=\$DISPLAY $bindtmpdir \$neurodesk_singularity_opts --pwd \"\$PWD\" $_base/$container $executable \"\$@\"" >> $executable
