@@ -315,7 +315,7 @@ while read envvariable; do \
    variableName=${completeVariableName#*DEPLOY_ENV_}
    # echo $variableName
 
-   echo "setenv(\"${variableName}\", ${value_with_basepath}" >> ${modulePath}/${moduleName}.lua
+   echo "setenv(\"${variableName}\", ${value_with_basepath})" >> ${modulePath}/${moduleName}.lua
 done < $_base/env.txt
 
 #check if there is a manual module file for this container and add it to the end
