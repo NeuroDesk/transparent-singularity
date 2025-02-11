@@ -298,7 +298,7 @@ cat README.md >> ${modulePath}/${moduleName}.lua
 echo "]])" >> ${modulePath}/${moduleName}.lua
 
 echo "whatis(\"${container}\")" >> ${modulePath}/${moduleName}.lua
-echo "prepend_path(\"PATH\", ${_base}" >> ${modulePath}/${moduleName}.lua
+echo "prepend_path(\"PATH\", ${_base})" >> ${modulePath}/${moduleName}.lua
 
 echo "create environment variables for module file"
 while read envvariable; do \
