@@ -12,6 +12,8 @@ set -e
 
 # https://github.com/sylabs/singularity/releases
 wget https://github.com/sylabs/singularity/releases/download/v4.3.1/singularity-ce_4.3.1-noble_amd64.deb
+sudo apt update
+sudo apt install libfuse2t64 fuse2fs
 sudo dpkg -i singularity-ce*.deb
 sudo apt-get install -f
 
